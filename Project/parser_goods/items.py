@@ -11,4 +11,7 @@ class ParserGoodsItem(scrapy.Item):
     url = scrapy.Field()
     price = scrapy.Field()
     brand = scrapy.Field()
+    reviews = scrapy.Field()
+    presence = scrapy.Field()
     _id = scrapy.Field()
+

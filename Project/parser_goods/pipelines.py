@@ -11,8 +11,4 @@ class ParserGoodsPipeline:
         collection = self.mongo_db[spider.name]
         collection.insert_one(item)
 
-        # print('\n**********\n%s\n%s\n***********\n' %(
-        #     item,
-        #     spider
-        # ))
         return item

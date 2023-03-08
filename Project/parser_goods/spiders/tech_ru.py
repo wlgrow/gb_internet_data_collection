@@ -19,11 +19,15 @@ class TechRuSpider(scrapy.Spider):
         good_url = response.url
         good_price = response.xpath("//span[@class='c-product-add-to-cart__price']/text()").getall()[0]
         good_brand = response.xpath("//span[span[@class='c-value__label-text'] = 'Бренд:']/span[@class='c-value__value-text c-link-decorator']/text()").getall()[0]
+        good_reviews = response.xpath("//div[@class='c-product-cart-form__top-values']//a[@class='c-link c-link_style_gray']/text()").getall()[0]
+        presence = response.xpath("//div[@class='c-product-skus-stocks__sku-stock']//span[@class='l-icon-box__content']/text()").getall()[0]
 
         yield ParserGoodsItem(
             name=good_name,
             url=good_url,
             price=int(good_price.replace(" ", "")),
-            brand=good_brand
+            brand=good_brand,
+            reviews=good_reviews,
+            presence=presence
         )
 
